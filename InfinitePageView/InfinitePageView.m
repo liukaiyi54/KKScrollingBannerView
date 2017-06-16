@@ -178,11 +178,4 @@ static const NSTimeInterval kTimerInterval = 4.0;
     }
 }
 
-- (void)setScrollInterval:(NSTimeInterval)scrollInterval {
-    _scrollInterval = scrollInterval;
-    if (_scrollInterval) {
-        
-    }
-}
-
 @end

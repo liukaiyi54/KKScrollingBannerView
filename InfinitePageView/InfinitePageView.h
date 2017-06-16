@@ -14,20 +14,11 @@
 
 @end
 
-@class InfinitePageView;
-@protocol InfinitePageViewDelegate <NSObject>
-
-- (void)InfinigePageView:(InfinitePageView *)pageView didSelectPageAtIndex:(NSInteger)index;
-
-@end
-
 @interface InfinitePageView : UIView
 
 @property (nonatomic, assign) BOOL isAutoScroll;
-@property (nonatomic, assign) NSTimeInterval scrollInterval;
 
 @property (nonatomic, weak) id<InfinitePageViewDataSource> dataSource;
-@property (nonatomic, weak) id<InfinitePageViewDelegate> delegate;
 
 - (void)reloadData;
 
