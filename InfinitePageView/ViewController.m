@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "MKInfinitePageView.h"
 
-@interface ViewController ()
+#import "InfinitePageView.h"
+
+@interface ViewController () <InfinitePageViewDataSource>
 
 @end
 
@@ -18,6 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    InfinitePageView *pageView = [[InfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    pageView.dataSource = self;
+    pageView.isAutoScroll = NO;
+    [pageView reloadData];
+    
+    [self.view addSubview:pageView];
+}
+
+- (NSArray *)pageViews {
     UIView *view = [[UIView alloc] init];
     view.backgroundColor = [UIColor redColor];
     UIView *view2 = [[UIView alloc] init];
@@ -25,21 +35,7 @@
     UIView *view3 = [[UIView alloc] init];
     view3.backgroundColor = [UIColor blueColor];
     
-    MKInfinitePageView *pageView = [[MKInfinitePageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 200)];
-    pageView.pageViews = @[view, view2];
-    pageView.autoPlay = NO;
-    pageView.tapHandler = ^(MKInfinitePageView *view, NSInteger index) {
-        NSLog(@"Did tap index %ld", index);
-    };
-    
-    [self.view addSubview:pageView];
+    return @[view, view2, view3];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

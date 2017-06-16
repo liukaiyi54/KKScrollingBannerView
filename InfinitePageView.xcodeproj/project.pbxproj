@@ -13,7 +13,7 @@
 		4C3C70DD1DEFC7EB007E49FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3C70DB1DEFC7EB007E49FC /* Main.storyboard */; };
 		4C3C70DF1DEFC7EB007E49FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3C70DE1DEFC7EB007E49FC /* Assets.xcassets */; };
 		4C3C70E21DEFC7EB007E49FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3C70E01DEFC7EB007E49FC /* LaunchScreen.storyboard */; };
-		4C3C70EB1DEFC82D007E49FC /* MKInfinitePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C70EA1DEFC82D007E49FC /* MKInfinitePageView.m */; };
+		4C989B241EF2C452004BC9B7 /* InfinitePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C989B231EF2C452004BC9B7 /* InfinitePageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,8 @@
 		4C3C70DE1DEFC7EB007E49FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C3C70E11DEFC7EB007E49FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C3C70E31DEFC7EB007E49FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C3C70E91DEFC82D007E49FC /* MKInfinitePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKInfinitePageView.h; sourceTree = "<group>"; };
-		4C3C70EA1DEFC82D007E49FC /* MKInfinitePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKInfinitePageView.m; sourceTree = "<group>"; };
+		4C989B221EF2C452004BC9B7 /* InfinitePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfinitePageView.h; sourceTree = "<group>"; };
+		4C989B231EF2C452004BC9B7 /* InfinitePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfinitePageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +65,8 @@
 				4C3C70D61DEFC7EB007E49FC /* AppDelegate.m */,
 				4C3C70D81DEFC7EB007E49FC /* ViewController.h */,
 				4C3C70D91DEFC7EB007E49FC /* ViewController.m */,
-				4C3C70E91DEFC82D007E49FC /* MKInfinitePageView.h */,
-				4C3C70EA1DEFC82D007E49FC /* MKInfinitePageView.m */,
+				4C989B221EF2C452004BC9B7 /* InfinitePageView.h */,
+				4C989B231EF2C452004BC9B7 /* InfinitePageView.m */,
 				4C3C70DB1DEFC7EB007E49FC /* Main.storyboard */,
 				4C3C70DE1DEFC7EB007E49FC /* Assets.xcassets */,
 				4C3C70E01DEFC7EB007E49FC /* LaunchScreen.storyboard */,
@@ -157,9 +157,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C3C70DA1DEFC7EB007E49FC /* ViewController.m in Sources */,
-				4C3C70EB1DEFC82D007E49FC /* MKInfinitePageView.m in Sources */,
 				4C3C70D71DEFC7EB007E49FC /* AppDelegate.m in Sources */,
 				4C3C70D41DEFC7EB007E49FC /* main.m in Sources */,
+				4C989B241EF2C452004BC9B7 /* InfinitePageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +316,7 @@
 				4C3C70E81DEFC7EB007E49FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
