@@ -180,4 +180,12 @@ static const NSTimeInterval kTimerInterval = 4.0;
     }
 }
 
+- (void)setTimeInterval:(NSTimeInterval)timeInterval {
+    _timeInterval = timeInterval;
+    if (_timeInterval > 0) {
+        [self removeTimer];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:_timeInterval target:self selector:@selector(scrollTheView) userInfo:nil repeats:YES];
+    }
+}
+
 @end

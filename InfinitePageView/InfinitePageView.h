@@ -18,6 +18,7 @@
 @interface InfinitePageView : UIView
 
 @property (nonatomic, assign) BOOL isAutoScroll;
+@property (nonatomic, assign) NSTimeInterval timeInterval;
 
 @property (nonatomic, weak) id<InfinitePageViewDataSource> dataSource;
 

@@ -21,6 +21,7 @@
     
     InfinitePageView *pageView = [[InfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     pageView.dataSource = self;
+    pageView.timeInterval = 1.0;
     [pageView reloadData];
     
     [self.view addSubview:pageView];
