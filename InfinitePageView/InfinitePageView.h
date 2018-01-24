@@ -10,6 +10,7 @@
 
 @protocol InfinitePageViewDataSource <NSObject>
 
+@required
 - (NSArray *)pageViews;
 
 @end

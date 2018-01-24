@@ -26,6 +26,7 @@
     [self.view addSubview:pageView];
 }
 
+#pragma mark - InfinitePageViewDataSource
 - (NSArray *)pageViews {
     UIView *view = [[UIView alloc] init];
     view.backgroundColor = [UIColor redColor];

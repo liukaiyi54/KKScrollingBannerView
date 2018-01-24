@@ -59,6 +59,7 @@ static const NSTimeInterval kTimerInterval = 4.0;
     if (self.dataSource) {
         NSInteger num = [self.dataSource pageViews].count;
         if (num == 0) return;
+        // 总视图数量等于1时在尾部增加一个首视图
         if (num == 1) {
             UIView *view = [self.dataSource pageViews].firstObject;
             view.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
@@ -66,6 +67,7 @@ static const NSTimeInterval kTimerInterval = 4.0;
             [self.scrollView addSubview:view];
             self.pageControl.hidden = YES;
         } else {
+            // 总视图数量大于1时，在viewList首部插入一个尾视图，再在尾部插入一个首视图，达到无限循环的目的
             UIView *lastView = [self.dataSource pageViews].lastObject;
             lastView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
             [self.viewList addObject:lastView];
