@@ -13,7 +13,9 @@ pageView.dataSource = self;
 [pageView reloadData];
 
 [self.view addSubview:pageView];
-
+```
+3. Set up dataSource:
+```
 #pragma mark - InfinitePageViewDataSource
 - (NSArray *)pageViews {
     UIView *view = [[UIView alloc] init];
@@ -27,4 +29,4 @@ pageView.dataSource = self;
 }
 
 ```
-3. You are good to go.
+4. You are good to go.
