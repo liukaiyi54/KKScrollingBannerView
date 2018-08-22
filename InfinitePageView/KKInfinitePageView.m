@@ -1,16 +1,16 @@
 //
-//  InfinitePageView.m
-//  InfinitePageView
+//  KKInfinitePageView.m
+//
 //
 //  Created by Michael on 15/06/2017.
 //  Copyright © 2017 Michael. All rights reserved.
 //
 
-#import "InfinitePageView.h"
+#import "KKInfinitePageView.h"
 
 static const NSTimeInterval kTimerInterval = 4.0;
 
-@interface InfinitePageView() <UIScrollViewDelegate>
+@interface KKInfinitePageView() <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *viewList;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -19,7 +19,7 @@ static const NSTimeInterval kTimerInterval = 4.0;
 
 @end
 
-@implementation InfinitePageView
+@implementation KKInfinitePageView
 
 - (void)dealloc {
     [self removeTimer];

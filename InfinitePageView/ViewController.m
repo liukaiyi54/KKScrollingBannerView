@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  InfinitePageView
+//  KKInfinitePageView
 //
 //  Created by Michael on 01/12/2016.
 //  Copyright © 2016 Michael. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-#import "InfinitePageView.h"
+#import "KKInfinitePageView.h"
 
 @interface ViewController () <InfinitePageViewDataSource>
 
@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    InfinitePageView *pageView = [[InfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    KKInfinitePageView *pageView = [[KKInfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     pageView.dataSource = self;
     pageView.timeInterval = 1.0;
     [pageView reloadData];
