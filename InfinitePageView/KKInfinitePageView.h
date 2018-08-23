@@ -29,6 +29,6 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, weak) id<InfinitePageViewDataSource> dataSource;
 
-- (void)reloadData;
+- (void)loadData;
 
 @end

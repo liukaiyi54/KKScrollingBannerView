@@ -19,10 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     KKInfinitePageView *pageView = [[KKInfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     pageView.dataSource = self;
     pageView.timeInterval = 1.0;
-    [pageView reloadData];
+    pageView.direction = PageViewDirectionVertical;
+    pageView.showPageControl = NO;
+    [pageView loadData];
     
     [self.view addSubview:pageView];
 }
