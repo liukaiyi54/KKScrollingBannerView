@@ -10,6 +10,8 @@
 
 #define WIDTH   self.frame.size.width
 #define HEIGHT  self.frame.size.height
+#define HORIZONTAL self.direction == PageViewDirectionRightToLeft || self.direction == PageViewDirectionLeftToRight
+#define VERTICAL self.direction == PageViewDirectionTopToBottom || self.direction == PageViewDirectionBottomToTop
 
 @interface KKInfinitePageView() <UIScrollViewDelegate>
 
@@ -52,7 +54,7 @@
 
 - (void)setupDefaultValues {
     self.timeInterval = 4.0;
-    self.direction = PageViewDirectionHorizontal;
+    self.direction = PageViewDirectionRightToLeft;
     self.isAutoScroll = YES;
     self.showPageControl = YES;
 }
@@ -78,41 +80,97 @@
             self.pageControl.hidden = YES;
         } else {
             // 总视图数量大于1时，在viewList首部插入一个尾视图，再在尾部插入一个首视图，达到无限循环的目的
-            UIView *lastView = [self.dataSource pageViews].lastObject;
-            lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
-            [self.viewList addObject:lastView];
-            [self.scrollView addSubview:lastView];
-            
-            if (self.direction == PageViewDirectionHorizontal) {
-                for (NSInteger i = 0; i < num; i++) {
-                    UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
-                    view.frame = CGRectMake((i+1) * WIDTH, 0, WIDTH, HEIGHT);
-                    [self.viewList addObject:view];
-                    [self.scrollView addSubview:view];
+
+            switch (self.direction) {
+                case PageViewDirectionLeftToRight: {
+                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                    firstView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+                    [self.viewList addObject:firstView];
+                    [self.scrollView addSubview:firstView];
+                    for (NSInteger i = num - 1; i >= 0; i--) {
+                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        view.frame = CGRectMake((num-i) * WIDTH, 0, WIDTH, HEIGHT);
+                        [self.viewList addObject:view];
+                        [self.scrollView addSubview:view];
+                    }
+                    
+                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                    lastView.frame = CGRectMake((self.viewList.count) * WIDTH, 0, WIDTH, HEIGHT);
+                    [self.viewList addObject:lastView];
+                    [self.scrollView addSubview:lastView];
+                    
+                    self.scrollView.contentSize = CGSizeMake(WIDTH * self.viewList.count, HEIGHT);
+                    self.scrollView.contentOffset = CGPointMake(WIDTH * num, 0);
+                    break;
                 }
-                
-                UIView *firstView = [self.dataSource pageViews].firstObject;
-                firstView.frame = CGRectMake((self.viewList.count) * WIDTH, 0, WIDTH, HEIGHT);
-                [self.viewList addObject:firstView];
-                [self.scrollView addSubview:firstView];
-                
-                self.scrollView.contentSize = CGSizeMake(WIDTH * self.viewList.count, HEIGHT);
-                self.scrollView.contentOffset = CGPointMake(WIDTH, 0);
-            } else {
-                for (NSInteger i = 0; i < num; i++) {
-                    UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
-                    view.frame = CGRectMake(0, (i+1) * HEIGHT, WIDTH, HEIGHT);
-                    [self.viewList addObject:view];
-                    [self.scrollView addSubview:view];
+                case PageViewDirectionRightToLeft: {
+                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                    lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+                    [self.viewList addObject:lastView];
+                    [self.scrollView addSubview:lastView];
+                    for (NSInteger i = 0; i < num; i++) {
+                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        view.frame = CGRectMake((i+1) * WIDTH, 0, WIDTH, HEIGHT);
+                        [self.viewList addObject:view];
+                        [self.scrollView addSubview:view];
+                    }
+                    
+                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                    firstView.frame = CGRectMake((self.viewList.count) * WIDTH, 0, WIDTH, HEIGHT);
+                    [self.viewList addObject:firstView];
+                    [self.scrollView addSubview:firstView];
+                    
+                    self.scrollView.contentSize = CGSizeMake(WIDTH * self.viewList.count, HEIGHT);
+                    self.scrollView.contentOffset = CGPointMake(WIDTH, 0);
+                    break;
                 }
-                UIView *firstView = [self.dataSource pageViews].firstObject;
-                firstView.frame = CGRectMake(0, (self.viewList.count) * HEIGHT, WIDTH, HEIGHT);
-                [self.viewList addObject:firstView];
-                [self.scrollView addSubview:firstView];
-                
-                self.scrollView.contentSize = CGSizeMake(WIDTH, HEIGHT * self.viewList.count);
-                self.scrollView.contentOffset = CGPointMake(0, HEIGHT);
+                case PageViewDirectionTopToBottom: {
+                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                    firstView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+                    [self.viewList addObject:firstView];
+                    [self.scrollView addSubview:firstView];
+                    for (NSInteger i = num - 1; i >= 0; i--) {
+                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        view.frame = CGRectMake(0, (num-i) * HEIGHT, WIDTH, HEIGHT);
+                        [self.viewList addObject:view];
+                        [self.scrollView addSubview:view];
+                    }
+                    
+                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                    lastView.frame = CGRectMake(0, self.viewList.count * HEIGHT, WIDTH, HEIGHT);
+                    [self.viewList addObject:lastView];
+                    [self.scrollView addSubview:lastView];
+                    
+                    self.scrollView.contentSize = CGSizeMake(WIDTH, HEIGHT * self.viewList.count);
+                    self.scrollView.contentOffset = CGPointMake(0, HEIGHT * num);
+                    
+                    break;
+                }
+                case PageViewDirectionBottomToTop: {
+                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                    lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+                    [self.viewList addObject:lastView];
+                    [self.scrollView addSubview:lastView];
+                    for (NSInteger i = 0; i < num; i++) {
+                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        view.frame = CGRectMake(0, (i+1) * HEIGHT, WIDTH, HEIGHT);
+                        [self.viewList addObject:view];
+                        [self.scrollView addSubview:view];
+                    }
+                    
+                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                    firstView.frame = CGRectMake(0, (self.viewList.count) * HEIGHT, WIDTH, HEIGHT);
+                    [self.viewList addObject:firstView];
+                    [self.scrollView addSubview:firstView];
+                    
+                    self.scrollView.contentSize = CGSizeMake(WIDTH, HEIGHT * self.viewList.count);
+                    self.scrollView.contentOffset = CGPointMake(0, HEIGHT);
+                    break;
+                }
+                default:
+                    break;
             }
+            
             self.pageControl.numberOfPages = num;
         }
     }
@@ -122,12 +180,26 @@
     if ([self.dataSource pageViews].count <= 1) return;
     
     [UIView animateWithDuration:0.5 animations:^{
-        if (self.direction == PageViewDirectionHorizontal) {
-            self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + WIDTH, 0);
-        } else {
-            self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y + HEIGHT);
+        switch (self.direction) {
+            case PageViewDirectionLeftToRight: {
+                self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - WIDTH, 0);
+                break;
+            }
+            case PageViewDirectionRightToLeft: {
+                self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + WIDTH, 0);
+                break;
+            }
+            case PageViewDirectionTopToBottom: {
+                self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y - HEIGHT);
+                break;
+            }
+            case PageViewDirectionBottomToTop: {
+                self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y + HEIGHT);
+                break;
+            }
+            default:
+                break;
         }
-
     }];
     [self scrollViewDidEndDecelerating:self.scrollView];
 }
@@ -144,7 +216,7 @@
 
 #pragma mark - scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.direction == PageViewDirectionHorizontal) {
+    if (HORIZONTAL) {
         scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
     } else {
         scrollView.contentOffset = CGPointMake(0, scrollView.contentOffset.y);
@@ -155,24 +227,30 @@
     CGFloat width = scrollView.frame.size.width;
     CGFloat height = scrollView.frame.size.height;
     
-    if (width == 0 && self.direction == PageViewDirectionHorizontal) return;
-    if (height == 0 && self.direction == PageViewDirectionVertical) return;
-    
+    if (HORIZONTAL) {
+        if (width == 0) return;
+    } else {
+        if (height == 0) return;
+    }
     
     NSInteger index = scrollView.contentOffset.x / width;
-    if (self.direction == PageViewDirectionVertical) {
+    if (VERTICAL) {
         index = scrollView.contentOffset.y / height;
     }
     if (index == 0) {
-        if (self.direction == PageViewDirectionHorizontal) {
+        if (HORIZONTAL) {
             scrollView.contentOffset = CGPointMake(width * (self.viewList.count - 2), 0);
         } else {
             scrollView.contentOffset = CGPointMake(0, height * (self.viewList.count - 2));
         }
         self.pageControl.currentPage = self.viewList.count - 2;
     } else if (index == self.viewList.count - 1) {
-        if (self.direction == PageViewDirectionHorizontal) {
-            scrollView.contentOffset = CGPointMake(width, 0);
+        if (HORIZONTAL) {
+            if (self.direction == PageViewDirectionLeftToRight) {
+                scrollView.contentOffset = CGPointMake(width * [self.dataSource pageViews].count, 0);
+            } else {
+                scrollView.contentOffset = CGPointMake(width, 0);
+            }
         } else {
             scrollView.contentOffset = CGPointMake(0, height);
         }
@@ -180,6 +258,8 @@
     } else {
         self.pageControl.currentPage = index - 1;
     }
+    
+    NSLog(@"%@", [NSDate date]);
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {

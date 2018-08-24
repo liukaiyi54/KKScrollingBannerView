@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    PageViewDirectionHorizontal,
-    PageViewDirectionVertical,
+    PageViewDirectionLeftToRight,
+    PageViewDirectionRightToLeft, //default direction
+    PageViewDirectionTopToBottom,
+    PageViewDirectionBottomToTop
 } PageViewDirection;
 
 @protocol InfinitePageViewDataSource <NSObject>
