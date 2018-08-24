@@ -27,7 +27,6 @@
     self.pageView.direction = PageViewDirectionLeftToRight;
     self.pageView.showPageControl = NO;
     self.pageView.isAutoScroll = YES;
-    [self.pageView loadData];
 
     
     [self.view addSubview:self.pageView];

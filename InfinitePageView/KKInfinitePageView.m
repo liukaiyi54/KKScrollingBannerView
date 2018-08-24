@@ -59,6 +59,14 @@
     self.showPageControl = YES;
 }
 
+#pragma mark - 即将进入窗口
+- (void)willMoveToWindow:(UIWindow *)newWindow
+{
+    [super willMoveToWindow:newWindow];
+    
+    [self loadData];
+}
+
 - (void)loadData {
     [self setNeedsLayout];
     [self layoutIfNeeded];
