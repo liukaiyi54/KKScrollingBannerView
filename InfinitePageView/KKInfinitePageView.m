@@ -1,19 +1,19 @@
 //
-//  KKScrollingBannerView.m
+//  KKInfinitePageView.m
 //
 //
 //  Created by Michael on 15/06/2017.
 //  Copyright © 2017 Michael. All rights reserved.
 //
 
-#import "KKScrollingBannerView.h"
+#import "KKInfinitePageView.h"
 
 #define WIDTH   self.frame.size.width
 #define HEIGHT  self.frame.size.height
-#define HORIZONTAL self.scrollDirection == KKScrollingBannerViewDirectionLeftToRight || self.scrollDirection == KKScrollingBannerViewDirectionRightToLeft
-#define VERTICAL self.scrollDirection == KKScrollingBannerViewDirectionTopToBottom || self.scrollDirection == KKScrollingBannerViewDirectionBottomToTop
+#define HORIZONTAL self.direction == PageViewDirectionRightToLeft || self.direction == PageViewDirectionLeftToRight
+#define VERTICAL self.direction == PageViewDirectionTopToBottom || self.direction == PageViewDirectionBottomToTop
 
-@interface KKScrollingBannerView() <UIScrollViewDelegate>
+@interface KKInfinitePageView() <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *viewList;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -22,12 +22,7 @@
 
 @end
 
-@implementation KKScrollingBannerView
-
-+ (instancetype)scrollingBannerViewWithFrame:(CGRect)frame {
-    KKScrollingBannerView *bannerView = [[KKScrollingBannerView alloc] initWithFrame:frame];
-    return bannerView;
-}
+@implementation KKInfinitePageView
 
 - (void)dealloc {
     [self removeTimer];
@@ -58,10 +53,10 @@
 }
 
 - (void)setupDefaultValues {
-    _timeInterval = 4.0;
-    _scrollDirection = KKScrollingBannerViewDirectionRightToLeft;
-    _autoScroll = YES;
-    _showPageControl = YES;
+    self.timeInterval = 4.0;
+    self.direction = PageViewDirectionRightToLeft;
+    self.isAutoScroll = YES;
+    self.showPageControl = YES;
 }
 
 #pragma mark - 即将进入窗口
@@ -94,8 +89,8 @@
         } else {
             // 总视图数量大于1时，在viewList首部插入一个尾视图，再在尾部插入一个首视图，达到无限循环的目的
 
-            switch (self.scrollDirection) {
-                case KKScrollingBannerViewDirectionLeftToRight: {
+            switch (self.direction) {
+                case PageViewDirectionLeftToRight: {
                     UIView *firstView = [self.dataSource pageViews].firstObject;
                     firstView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:firstView];
@@ -116,7 +111,7 @@
                     self.scrollView.contentOffset = CGPointMake(WIDTH * num, 0);
                     break;
                 }
-                case KKScrollingBannerViewDirectionRightToLeft: {
+                case PageViewDirectionRightToLeft: {
                     UIView *lastView = [self.dataSource pageViews].lastObject;
                     lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:lastView];
@@ -137,7 +132,7 @@
                     self.scrollView.contentOffset = CGPointMake(WIDTH, 0);
                     break;
                 }
-                case KKScrollingBannerViewDirectionTopToBottom: {
+                case PageViewDirectionTopToBottom: {
                     UIView *firstView = [self.dataSource pageViews].firstObject;
                     firstView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:firstView];
@@ -159,7 +154,7 @@
                     
                     break;
                 }
-                case KKScrollingBannerViewDirectionBottomToTop: {
+                case PageViewDirectionBottomToTop: {
                     UIView *lastView = [self.dataSource pageViews].lastObject;
                     lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:lastView];
@@ -193,20 +188,20 @@
     if ([self.dataSource pageViews].count <= 1) return;
     
     [UIView animateWithDuration:0.5 animations:^{
-        switch (self.scrollDirection) {
-            case KKScrollingBannerViewDirectionLeftToRight: {
+        switch (self.direction) {
+            case PageViewDirectionLeftToRight: {
                 self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - WIDTH, 0);
                 break;
             }
-            case KKScrollingBannerViewDirectionRightToLeft: {
+            case PageViewDirectionRightToLeft: {
                 self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + WIDTH, 0);
                 break;
             }
-            case KKScrollingBannerViewDirectionTopToBottom: {
+            case PageViewDirectionTopToBottom: {
                 self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y - HEIGHT);
                 break;
             }
-            case KKScrollingBannerViewDirectionBottomToTop: {
+            case PageViewDirectionBottomToTop: {
                 self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y + HEIGHT);
                 break;
             }
@@ -259,7 +254,7 @@
         self.pageControl.currentPage = self.viewList.count - 2;
     } else if (index == self.viewList.count - 1) {
         if (HORIZONTAL) {
-            if (self.scrollDirection == KKScrollingBannerViewDirectionLeftToRight) {
+            if (self.direction == PageViewDirectionLeftToRight) {
                 scrollView.contentOffset = CGPointMake(width * [self.dataSource pageViews].count, 0);
             } else {
                 scrollView.contentOffset = CGPointMake(width, 0);
@@ -317,9 +312,9 @@
     return _viewList;
 }
 
-- (void)setAutoScroll:(BOOL)autoScroll {
-    _autoScroll = autoScroll;
-    if (_autoScroll) {
+- (void)setIsAutoScroll:(BOOL)isAutoScroll {
+    _isAutoScroll = isAutoScroll;
+    if (_isAutoScroll) {
         [self initTimer];
     } else {
         [self removeTimer];

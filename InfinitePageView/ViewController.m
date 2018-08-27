@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  KKScrollingBannerView
+//  KKInfinitePageView
 //
 //  Created by Michael on 01/12/2016.
 //  Copyright © 2016 Michael. All rights reserved.
@@ -8,10 +8,10 @@
 
 #import "ViewController.h"
 
-#import "KKScrollingBannerView.h"
+#import "KKInfinitePageView.h"
 
-@interface ViewController () <BannerViewDataSource>
-@property (nonatomic, strong) KKScrollingBannerView *pageView;
+@interface ViewController () <InfinitePageViewDataSource>
+@property (nonatomic, strong) KKInfinitePageView *pageView;
 @end
 
 @implementation ViewController
@@ -21,33 +21,33 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.pageView = [[KKScrollingBannerView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    self.pageView = [[KKInfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     self.pageView.dataSource = self;
     self.pageView.timeInterval = 1.0;
-    self.pageView.scrollDirection = KKScrollingBannerViewDirectionRightToLeft;
+    self.pageView.direction = PageViewDirectionLeftToRight;
     self.pageView.showPageControl = NO;
-    self.pageView.autoScroll = YES;
+    self.pageView.isAutoScroll = YES;
 
     
     [self.view addSubview:self.pageView];
 }
 - (IBAction)leftToRight:(UIButton *)sender {
-    self.pageView.scrollDirection = KKScrollingBannerViewDirectionLeftToRight;
+    self.pageView.direction = PageViewDirectionLeftToRight;
     [self.pageView loadData];
 }
 
 - (IBAction)rightToLeft:(UIButton *)sender {
-    self.pageView.scrollDirection = KKScrollingBannerViewDirectionRightToLeft;
+    self.pageView.direction = PageViewDirectionRightToLeft;
     [self.pageView loadData];
 }
 
 - (IBAction)topToBottom:(UIButton *)sender {
-    self.pageView.scrollDirection = KKScrollingBannerViewDirectionTopToBottom;
+    self.pageView.direction = PageViewDirectionTopToBottom;
     [self.pageView loadData];
 }
 
 - (IBAction)bottomToTop:(UIButton *)sender {
-    self.pageView.scrollDirection = KKScrollingBannerViewDirectionBottomToTop;
+    self.pageView.direction = PageViewDirectionBottomToTop;
     [self.pageView loadData];
 }
 
