@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4C3C70CE1DEFC7EB007E49FC"
-               BuildableName = "InfinitePageView.app"
-               BlueprintName = "InfinitePageView"
-               ReferencedContainer = "container:InfinitePageView.xcodeproj">
+               BuildableName = "KKScrollingBannerView.app"
+               BlueprintName = "KKScrollingBannerView"
+               ReferencedContainer = "container:KKScrollingBannerView.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C3C70CE1DEFC7EB007E49FC"
-            BuildableName = "InfinitePageView.app"
-            BlueprintName = "InfinitePageView"
-            ReferencedContainer = "container:InfinitePageView.xcodeproj">
+            BuildableName = "KKScrollingBannerView.app"
+            BlueprintName = "KKScrollingBannerView"
+            ReferencedContainer = "container:KKScrollingBannerView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C3C70CE1DEFC7EB007E49FC"
-            BuildableName = "InfinitePageView.app"
-            BlueprintName = "InfinitePageView"
-            ReferencedContainer = "container:InfinitePageView.xcodeproj">
+            BuildableName = "KKScrollingBannerView.app"
+            BlueprintName = "KKScrollingBannerView"
+            ReferencedContainer = "container:KKScrollingBannerView.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C3C70CE1DEFC7EB007E49FC"
-            BuildableName = "InfinitePageView.app"
-            BlueprintName = "InfinitePageView"
-            ReferencedContainer = "container:InfinitePageView.xcodeproj">
+            BuildableName = "KKScrollingBannerView.app"
+            BlueprintName = "KKScrollingBannerView"
+            ReferencedContainer = "container:KKScrollingBannerView.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
