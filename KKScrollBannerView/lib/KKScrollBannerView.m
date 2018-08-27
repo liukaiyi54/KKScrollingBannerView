@@ -1,19 +1,19 @@
 //
-//  KKScrollingBannerView.m
+//  KKScrollBannerView.m
 //
 //
 //  Created by Michael on 15/06/2017.
 //  Copyright © 2017 Michael. All rights reserved.
 //
 
-#import "KKScrollingBannerView.h"
+#import "KKScrollBannerView.h"
 
 #define WIDTH   self.frame.size.width
 #define HEIGHT  self.frame.size.height
-#define HORIZONTAL self.scrollDirection == KKScrollingBannerViewDirectionLeftToRight || self.scrollDirection == KKScrollingBannerViewDirectionRightToLeft
-#define VERTICAL self.scrollDirection == KKScrollingBannerViewDirectionTopToBottom || self.scrollDirection == KKScrollingBannerViewDirectionBottomToTop
+#define HORIZONTAL self.scrollDirection == KKScrollBannerViewDirectionLeftToRight || self.scrollDirection == KKScrollBannerViewDirectionRightToLeft
+#define VERTICAL self.scrollDirection == KKScrollBannerViewDirectionTopToBottom || self.scrollDirection == KKScrollBannerViewDirectionBottomToTop
 
-@interface KKScrollingBannerView() <UIScrollViewDelegate>
+@interface KKScrollBannerView() <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *viewList;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -22,10 +22,10 @@
 
 @end
 
-@implementation KKScrollingBannerView
+@implementation KKScrollBannerView
 
-+ (instancetype)scrollingBannerViewWithFrame:(CGRect)frame {
-    KKScrollingBannerView *bannerView = [[KKScrollingBannerView alloc] initWithFrame:frame];
++ (instancetype)scrollBannerViewWithFrame:(CGRect)frame {
+    KKScrollBannerView *bannerView = [[KKScrollBannerView alloc] initWithFrame:frame];
     return bannerView;
 }
 
@@ -59,7 +59,7 @@
 
 - (void)setupDefaultValues {
     _timeInterval = 4.0;
-    _scrollDirection = KKScrollingBannerViewDirectionRightToLeft;
+    _scrollDirection = KKScrollBannerViewDirectionRightToLeft;
     _autoScroll = YES;
     _showPageControl = YES;
 }
@@ -82,11 +82,11 @@
     [self.viewList removeAllObjects];
     
     if (self.dataSource) {
-        NSInteger num = [self.dataSource pageViews].count;
+        NSInteger num = [self.dataSource bannerViews].count;
         if (num == 0) return;
         // 总视图数量等于1时在尾部增加一个首视图
         if (num == 1) {
-            UIView *view = [self.dataSource pageViews].firstObject;
+            UIView *view = [self.dataSource bannerViews].firstObject;
             view.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
             [self.viewList addObject:view];
             [self.scrollView addSubview:view];
@@ -95,19 +95,19 @@
             // 总视图数量大于1时，在viewList首部插入一个尾视图，再在尾部插入一个首视图，达到无限循环的目的
 
             switch (self.scrollDirection) {
-                case KKScrollingBannerViewDirectionLeftToRight: {
-                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                case KKScrollBannerViewDirectionLeftToRight: {
+                    UIView *firstView = [self.dataSource bannerViews].firstObject;
                     firstView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:firstView];
                     [self.scrollView addSubview:firstView];
                     for (NSInteger i = num - 1; i >= 0; i--) {
-                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        UIView *view = [[self.dataSource bannerViews] objectAtIndex:i];
                         view.frame = CGRectMake((num-i) * WIDTH, 0, WIDTH, HEIGHT);
                         [self.viewList addObject:view];
                         [self.scrollView addSubview:view];
                     }
                     
-                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                    UIView *lastView = [self.dataSource bannerViews].lastObject;
                     lastView.frame = CGRectMake((self.viewList.count) * WIDTH, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:lastView];
                     [self.scrollView addSubview:lastView];
@@ -116,19 +116,19 @@
                     self.scrollView.contentOffset = CGPointMake(WIDTH * num, 0);
                     break;
                 }
-                case KKScrollingBannerViewDirectionRightToLeft: {
-                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                case KKScrollBannerViewDirectionRightToLeft: {
+                    UIView *lastView = [self.dataSource bannerViews].lastObject;
                     lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:lastView];
                     [self.scrollView addSubview:lastView];
                     for (NSInteger i = 0; i < num; i++) {
-                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        UIView *view = [[self.dataSource bannerViews] objectAtIndex:i];
                         view.frame = CGRectMake((i+1) * WIDTH, 0, WIDTH, HEIGHT);
                         [self.viewList addObject:view];
                         [self.scrollView addSubview:view];
                     }
                     
-                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                    UIView *firstView = [self.dataSource bannerViews].firstObject;
                     firstView.frame = CGRectMake((self.viewList.count) * WIDTH, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:firstView];
                     [self.scrollView addSubview:firstView];
@@ -137,19 +137,19 @@
                     self.scrollView.contentOffset = CGPointMake(WIDTH, 0);
                     break;
                 }
-                case KKScrollingBannerViewDirectionTopToBottom: {
-                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                case KKScrollBannerViewDirectionTopToBottom: {
+                    UIView *firstView = [self.dataSource bannerViews].firstObject;
                     firstView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:firstView];
                     [self.scrollView addSubview:firstView];
                     for (NSInteger i = num - 1; i >= 0; i--) {
-                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        UIView *view = [[self.dataSource bannerViews] objectAtIndex:i];
                         view.frame = CGRectMake(0, (num-i) * HEIGHT, WIDTH, HEIGHT);
                         [self.viewList addObject:view];
                         [self.scrollView addSubview:view];
                     }
                     
-                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                    UIView *lastView = [self.dataSource bannerViews].lastObject;
                     lastView.frame = CGRectMake(0, self.viewList.count * HEIGHT, WIDTH, HEIGHT);
                     [self.viewList addObject:lastView];
                     [self.scrollView addSubview:lastView];
@@ -159,19 +159,19 @@
                     
                     break;
                 }
-                case KKScrollingBannerViewDirectionBottomToTop: {
-                    UIView *lastView = [self.dataSource pageViews].lastObject;
+                case KKScrollBannerViewDirectionBottomToTop: {
+                    UIView *lastView = [self.dataSource bannerViews].lastObject;
                     lastView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
                     [self.viewList addObject:lastView];
                     [self.scrollView addSubview:lastView];
                     for (NSInteger i = 0; i < num; i++) {
-                        UIView *view = [[self.dataSource pageViews] objectAtIndex:i];
+                        UIView *view = [[self.dataSource bannerViews] objectAtIndex:i];
                         view.frame = CGRectMake(0, (i+1) * HEIGHT, WIDTH, HEIGHT);
                         [self.viewList addObject:view];
                         [self.scrollView addSubview:view];
                     }
                     
-                    UIView *firstView = [self.dataSource pageViews].firstObject;
+                    UIView *firstView = [self.dataSource bannerViews].firstObject;
                     firstView.frame = CGRectMake(0, (self.viewList.count) * HEIGHT, WIDTH, HEIGHT);
                     [self.viewList addObject:firstView];
                     [self.scrollView addSubview:firstView];
@@ -190,23 +190,23 @@
 }
 
 - (void)scrollTheView {
-    if ([self.dataSource pageViews].count <= 1) return;
+    if ([self.dataSource bannerViews].count <= 1) return;
     
     [UIView animateWithDuration:0.5 animations:^{
         switch (self.scrollDirection) {
-            case KKScrollingBannerViewDirectionLeftToRight: {
+            case KKScrollBannerViewDirectionLeftToRight: {
                 self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x - WIDTH, 0);
                 break;
             }
-            case KKScrollingBannerViewDirectionRightToLeft: {
+            case KKScrollBannerViewDirectionRightToLeft: {
                 self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + WIDTH, 0);
                 break;
             }
-            case KKScrollingBannerViewDirectionTopToBottom: {
+            case KKScrollBannerViewDirectionTopToBottom: {
                 self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y - HEIGHT);
                 break;
             }
-            case KKScrollingBannerViewDirectionBottomToTop: {
+            case KKScrollBannerViewDirectionBottomToTop: {
                 self.scrollView.contentOffset = CGPointMake(0, self.scrollView.contentOffset.y + HEIGHT);
                 break;
             }
@@ -259,8 +259,8 @@
         self.pageControl.currentPage = self.viewList.count - 2;
     } else if (index == self.viewList.count - 1) {
         if (HORIZONTAL) {
-            if (self.scrollDirection == KKScrollingBannerViewDirectionLeftToRight) {
-                scrollView.contentOffset = CGPointMake(width * [self.dataSource pageViews].count, 0);
+            if (self.scrollDirection == KKScrollBannerViewDirectionLeftToRight) {
+                scrollView.contentOffset = CGPointMake(width * [self.dataSource bannerViews].count, 0);
             } else {
                 scrollView.contentOffset = CGPointMake(width, 0);
             }
@@ -271,8 +271,6 @@
     } else {
         self.pageControl.currentPage = index - 1;
     }
-    
-    NSLog(@"%@", [NSDate date]);
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {

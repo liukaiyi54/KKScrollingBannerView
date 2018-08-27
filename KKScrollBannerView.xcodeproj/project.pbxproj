@@ -13,12 +13,12 @@
 		4C3C70DD1DEFC7EB007E49FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3C70DB1DEFC7EB007E49FC /* Main.storyboard */; };
 		4C3C70DF1DEFC7EB007E49FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C3C70DE1DEFC7EB007E49FC /* Assets.xcassets */; };
 		4C3C70E21DEFC7EB007E49FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C3C70E01DEFC7EB007E49FC /* LaunchScreen.storyboard */; };
-		4C989B241EF2C452004BC9B7 /* KKScrollingBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C989B231EF2C452004BC9B7 /* KKScrollingBannerView.m */; };
+		4C989B241EF2C452004BC9B7 /* KKScrollBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C989B231EF2C452004BC9B7 /* KKScrollBannerView.m */; };
 		4C9CCF412133A633000B6237 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C9CCF402133A633000B6237 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C3C70CF1DEFC7EB007E49FC /* KKScrollingBannerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKScrollingBannerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3C70CF1DEFC7EB007E49FC /* KKScrollBannerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKScrollBannerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3C70D31DEFC7EB007E49FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C3C70D51DEFC7EB007E49FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C3C70D61DEFC7EB007E49FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -27,8 +27,8 @@
 		4C3C70DC1DEFC7EB007E49FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C3C70DE1DEFC7EB007E49FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C3C70E11DEFC7EB007E49FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4C989B221EF2C452004BC9B7 /* KKScrollingBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKScrollingBannerView.h; sourceTree = "<group>"; };
-		4C989B231EF2C452004BC9B7 /* KKScrollingBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKScrollingBannerView.m; sourceTree = "<group>"; };
+		4C989B221EF2C452004BC9B7 /* KKScrollBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKScrollBannerView.h; sourceTree = "<group>"; };
+		4C989B231EF2C452004BC9B7 /* KKScrollBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKScrollBannerView.m; sourceTree = "<group>"; };
 		4C9CCF402133A633000B6237 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,7 +46,7 @@
 		4C3C70C61DEFC7EB007E49FC = {
 			isa = PBXGroup;
 			children = (
-				4C3C70D11DEFC7EB007E49FC /* KKScrollingBannerView */,
+				4C3C70D11DEFC7EB007E49FC /* KKScrollBannerView */,
 				4C3C70D01DEFC7EB007E49FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		4C3C70D01DEFC7EB007E49FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C3C70CF1DEFC7EB007E49FC /* KKScrollingBannerView.app */,
+				4C3C70CF1DEFC7EB007E49FC /* KKScrollBannerView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C3C70D11DEFC7EB007E49FC /* KKScrollingBannerView */ = {
+		4C3C70D11DEFC7EB007E49FC /* KKScrollBannerView */ = {
 			isa = PBXGroup;
 			children = (
 				4C63AB4C2130F7AA004C5C8D /* lib */,
@@ -73,7 +73,7 @@
 				4C9CCF402133A633000B6237 /* Info.plist */,
 				4C3C70D21DEFC7EB007E49FC /* Supporting Files */,
 			);
-			path = KKScrollingBannerView;
+			path = KKScrollBannerView;
 			sourceTree = "<group>";
 		};
 		4C3C70D21DEFC7EB007E49FC /* Supporting Files */ = {
@@ -87,8 +87,8 @@
 		4C63AB4C2130F7AA004C5C8D /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				4C989B221EF2C452004BC9B7 /* KKScrollingBannerView.h */,
-				4C989B231EF2C452004BC9B7 /* KKScrollingBannerView.m */,
+				4C989B221EF2C452004BC9B7 /* KKScrollBannerView.h */,
+				4C989B231EF2C452004BC9B7 /* KKScrollBannerView.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -96,9 +96,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C3C70CE1DEFC7EB007E49FC /* KKScrollingBannerView */ = {
+		4C3C70CE1DEFC7EB007E49FC /* KKScrollBannerView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C3C70E61DEFC7EB007E49FC /* Build configuration list for PBXNativeTarget "KKScrollingBannerView" */;
+			buildConfigurationList = 4C3C70E61DEFC7EB007E49FC /* Build configuration list for PBXNativeTarget "KKScrollBannerView" */;
 			buildPhases = (
 				4C3C70CB1DEFC7EB007E49FC /* Sources */,
 				4C3C70CC1DEFC7EB007E49FC /* Frameworks */,
@@ -108,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = KKScrollingBannerView;
+			name = KKScrollBannerView;
 			productName = InfinitePageView;
-			productReference = 4C3C70CF1DEFC7EB007E49FC /* KKScrollingBannerView.app */;
+			productReference = 4C3C70CF1DEFC7EB007E49FC /* KKScrollBannerView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4C3C70CA1DEFC7EB007E49FC /* Build configuration list for PBXProject "KKScrollingBannerView" */;
+			buildConfigurationList = 4C3C70CA1DEFC7EB007E49FC /* Build configuration list for PBXProject "KKScrollBannerView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -142,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C3C70CE1DEFC7EB007E49FC /* KKScrollingBannerView */,
+				4C3C70CE1DEFC7EB007E49FC /* KKScrollBannerView */,
 			);
 		};
 /* End PBXProject section */
@@ -169,7 +169,7 @@
 				4C3C70DA1DEFC7EB007E49FC /* ViewController.m in Sources */,
 				4C3C70D71DEFC7EB007E49FC /* AppDelegate.m in Sources */,
 				4C3C70D41DEFC7EB007E49FC /* main.m in Sources */,
-				4C989B241EF2C452004BC9B7 /* KKScrollingBannerView.m in Sources */,
+				4C989B241EF2C452004BC9B7 /* KKScrollBannerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,9 +288,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JTVP4Z7968;
-				INFOPLIST_FILE = KKScrollingBannerView/Info.plist;
+				INFOPLIST_FILE = KKScrollBannerView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MichaelOpenSourceFactory.KKScrollingBannerView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MichaelOpenSourceFactory.KKScrollBannerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -300,9 +300,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = JTVP4Z7968;
-				INFOPLIST_FILE = KKScrollingBannerView/Info.plist;
+				INFOPLIST_FILE = KKScrollBannerView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.MichaelOpenSourceFactory.KKScrollingBannerView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MichaelOpenSourceFactory.KKScrollBannerView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -310,7 +310,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C3C70CA1DEFC7EB007E49FC /* Build configuration list for PBXProject "KKScrollingBannerView" */ = {
+		4C3C70CA1DEFC7EB007E49FC /* Build configuration list for PBXProject "KKScrollBannerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C3C70E41DEFC7EB007E49FC /* Debug */,
@@ -319,7 +319,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C3C70E61DEFC7EB007E49FC /* Build configuration list for PBXNativeTarget "KKScrollingBannerView" */ = {
+		4C3C70E61DEFC7EB007E49FC /* Build configuration list for PBXNativeTarget "KKScrollBannerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4C3C70E71DEFC7EB007E49FC /* Debug */,

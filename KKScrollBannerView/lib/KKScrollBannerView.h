@@ -1,6 +1,6 @@
 //
-//  KKScrollingBannerView.h
-//  KKScrollingBannerView
+//  KKScrollBannerView.h
+//  KKScrollBannerView
 //
 //  Created by Michael on 15/06/2017.
 //  Copyright © 2017 Michael. All rights reserved.
@@ -9,21 +9,21 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    KKScrollingBannerViewDirectionLeftToRight,
-    KKScrollingBannerViewDirectionRightToLeft, //default direction
-    KKScrollingBannerViewDirectionTopToBottom,
-    KKScrollingBannerViewDirectionBottomToTop
+    KKScrollBannerViewDirectionLeftToRight,
+    KKScrollBannerViewDirectionRightToLeft, //default direction
+    KKScrollBannerViewDirectionTopToBottom,
+    KKScrollBannerViewDirectionBottomToTop
 } BannerViewScrollDirection;
 
 @protocol BannerViewDataSource <NSObject>
 
 @required
 
-- (NSArray *)pageViews;
+- (NSArray *)bannerViews;
 
 @end
 
-@interface KKScrollingBannerView : UIView
+@interface KKScrollBannerView : UIView
 
 @property (nonatomic, assign) BOOL autoScroll;
 @property (nonatomic, assign) BOOL showPageControl;
@@ -32,7 +32,7 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, weak) id<BannerViewDataSource> dataSource;
 
-+ (instancetype)scrollingBannerViewWithFrame:(CGRect)frame;
++ (instancetype)scrollBannerViewWithFrame:(CGRect)frame;
 
 - (void)loadData;
 
