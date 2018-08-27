@@ -1,4 +1,4 @@
-# InfinitePageView
+# KKScrollingBannerView
 ![jun-16-2017 22-42-26](https://user-images.githubusercontent.com/3932207/27231498-61c41c38-52e5-11e7-9df8-bb2c89893b86.gif)
 
 # A very handy infinite page view.
@@ -10,7 +10,6 @@
 ```  
 InfinitePageView *pageView = [[InfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
 pageView.dataSource = self;
-[pageView reloadData];
 
 [self.view addSubview:pageView];
 ```
