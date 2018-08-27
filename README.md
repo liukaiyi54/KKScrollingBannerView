@@ -1,30 +1,27 @@
-# KKScrollingBannerView
-![jun-16-2017 22-42-26](https://user-images.githubusercontent.com/3932207/27231498-61c41c38-52e5-11e7-9df8-bb2c89893b86.gif)
+# KKScrollBannerView
+![jun-16-2017 22-42-26](https://user-images.githubusercontent.com/3932207/44644880-31fe2680-aa08-11e8-958f-0ba12931f5eb.gif)
 
-# A very handy infinite page view.
+# A very handy scroll banner view. 
 
 ## Usage
 
 1. Copy `InfinitePageView.h` and `InfinitePageView.m` to your project.
 2. Set up in your views like this: 
 ```  
-InfinitePageView *pageView = [[InfinitePageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-pageView.dataSource = self;
+KKScrollBannerView *bannerView = [[KKScrollBannerView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+bannerView.dataSource = self;
 
-[self.view addSubview:pageView];
+[self.view addSubview:bannerView];
 ```
 3. Set up dataSource:
 ```
-#pragma mark - InfinitePageViewDataSource
-- (NSArray *)pageViews {
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor redColor];
+#pragma mark - DataSource
+- (NSArray *)bannerViews {
+    UIView *view0 = [[UIView alloc] init];
+    UIView *view1 = [[UIView alloc] init];
     UIView *view2 = [[UIView alloc] init];
-    view2.backgroundColor = [UIColor yellowColor];
-    UIView *view3 = [[UIView alloc] init];
-    view3.backgroundColor = [UIColor blueColor];
-    
-    return @[view, view2, view3];
+    ...
+    return @[view0, view1, view2];
 }
 
 ```
