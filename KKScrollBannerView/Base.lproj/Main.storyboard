@@ -49,19 +49,39 @@
                                     <action selector="bottomToTop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ADo-aA-yJF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGn-gI-cMF">
+                                <rect key="frame" x="160" y="528" width="55" height="30"/>
+                                <state key="normal" title="scroll to"/>
+                                <connections>
+                                    <action selector="scrollToIndex:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fa9-tC-eFk"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NqJ-la-CQ0">
+                                <rect key="frame" x="229" y="528" width="25" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EY6-LK-Mga" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1i6-GG-aFl"/>
+                            <constraint firstItem="BGn-gI-cMF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LsM-oe-ubr"/>
                             <constraint firstItem="c23-8N-CSd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MSR-6K-Lfy"/>
                             <constraint firstItem="rFi-tc-Ehd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ss2-pP-MYW"/>
                             <constraint firstItem="nyd-m0-U1O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XMr-9P-lxX"/>
                             <constraint firstItem="EY6-LK-Mga" firstAttribute="top" secondItem="nyd-m0-U1O" secondAttribute="bottom" constant="15" id="a2J-C4-ryV"/>
+                            <constraint firstItem="NqJ-la-CQ0" firstAttribute="leading" secondItem="BGn-gI-cMF" secondAttribute="trailing" constant="14" id="aPV-OA-0zp"/>
+                            <constraint firstItem="NqJ-la-CQ0" firstAttribute="centerY" secondItem="BGn-gI-cMF" secondAttribute="centerY" id="f4Y-aR-0Fn"/>
+                            <constraint firstItem="BGn-gI-cMF" firstAttribute="top" secondItem="c23-8N-CSd" secondAttribute="bottom" constant="45" id="idd-WR-cG9"/>
                             <constraint firstItem="nyd-m0-U1O" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jrp-BI-lGT"/>
                             <constraint firstItem="rFi-tc-Ehd" firstAttribute="top" secondItem="EY6-LK-Mga" secondAttribute="bottom" constant="15" id="mnt-9c-5Co"/>
                             <constraint firstItem="c23-8N-CSd" firstAttribute="top" secondItem="rFi-tc-Ehd" secondAttribute="bottom" constant="15" id="nV3-vA-eVI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="indexTextField" destination="NqJ-la-CQ0" id="FW6-46-mte"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

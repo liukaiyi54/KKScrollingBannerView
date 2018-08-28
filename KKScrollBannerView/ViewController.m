@@ -11,6 +11,7 @@
 #import "KKScrollBannerView.h"
 
 @interface ViewController () <BannerViewDataSource>
+@property (weak, nonatomic) IBOutlet UITextField *indexTextField;
 @property (nonatomic, strong) KKScrollBannerView *pageView;
 @end
 
@@ -23,7 +24,7 @@
     
     self.pageView = [[KKScrollBannerView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     self.pageView.dataSource = self;
-    self.pageView.timeInterval = 1.0;
+    self.pageView.timeInterval = 4.0;
     self.pageView.scrollDirection = KKScrollBannerViewDirectionRightToLeft;
     self.pageView.showPageControl = NO;
     self.pageView.autoScroll = YES;
@@ -32,26 +33,27 @@
 }
 - (IBAction)leftToRight:(UIButton *)sender {
     self.pageView.scrollDirection = KKScrollBannerViewDirectionLeftToRight;
-    [self.pageView loadData];
+    [self.pageView updateData];
 }
 
 - (IBAction)rightToLeft:(UIButton *)sender {
     self.pageView.scrollDirection = KKScrollBannerViewDirectionRightToLeft;
-    [self.pageView loadData];
+    [self.pageView updateData];
 }
 
 - (IBAction)topToBottom:(UIButton *)sender {
     self.pageView.scrollDirection = KKScrollBannerViewDirectionTopToBottom;
-    [self.pageView loadData];
+    [self.pageView updateData];
 }
 
 - (IBAction)bottomToTop:(UIButton *)sender {
     self.pageView.scrollDirection = KKScrollBannerViewDirectionBottomToTop;
-    [self.pageView loadData];
+    [self.pageView updateData];
 }
 
-
-
+- (IBAction)scrollToIndex:(UIButton *)sender {
+    [self.pageView scrollToIndex:[self.indexTextField.text integerValue]];
+}
 
 #pragma mark - DataSource
 - (NSArray *)bannerViews {

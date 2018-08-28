@@ -15,11 +15,20 @@ typedef enum : NSUInteger {
     KKScrollBannerViewDirectionBottomToTop
 } BannerViewScrollDirection;
 
+@class KKScrollBannerView;
 @protocol BannerViewDataSource <NSObject>
 
 @required
 
 - (NSArray *)bannerViews;
+
+@end
+
+@protocol BannerViewDelegate <NSObject>
+
+@optional
+
+- (void)bannerView:(KKScrollBannerView *)bannerView didSelectItemAtIndex:(NSInteger)index;
 
 @end
 
@@ -34,6 +43,8 @@ typedef enum : NSUInteger {
 
 + (instancetype)scrollBannerViewWithFrame:(CGRect)frame;
 
-- (void)loadData;
+- (void)updateData;
+
+- (void)scrollToIndex:(NSInteger)index;
 
 @end

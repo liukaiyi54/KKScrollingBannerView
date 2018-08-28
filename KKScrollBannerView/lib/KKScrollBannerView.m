@@ -69,10 +69,10 @@
 {
     [super willMoveToWindow:newWindow];
     
-    [self loadData];
+    [self updateData];
 }
 
-- (void)loadData {
+- (void)updateData {
     [self setNeedsLayout];
     [self layoutIfNeeded];
     
@@ -225,6 +225,36 @@
 - (void)removeTimer {
     [self.timer invalidate];
     self.timer = nil;
+}
+
+#pragma mark - public methods
+- (void)scrollToIndex:(NSInteger)index {
+    if (index <= 0 || index > [self.dataSource bannerViews].count) return;
+    
+    [self removeTimer];
+
+    switch (self.scrollDirection) {
+        case KKScrollBannerViewDirectionRightToLeft: {
+            self.scrollView.contentOffset = CGPointMake(WIDTH * index, 0);
+            break;
+        }
+        case KKScrollBannerViewDirectionLeftToRight: {
+            self.scrollView.contentOffset = CGPointMake(WIDTH * ([self.dataSource bannerViews].count - index + 1), 0);
+            break;
+        }
+        case KKScrollBannerViewDirectionTopToBottom: {
+            self.scrollView.contentOffset = CGPointMake(0, HEIGHT * ([self.dataSource bannerViews].count - index + 1));
+            break;
+        }
+        case KKScrollBannerViewDirectionBottomToTop: {
+            self.scrollView.contentOffset = CGPointMake(0, HEIGHT * index);
+            break;
+        }
+        default:
+            break;
+    }
+    
+    [self initTimer];
 }
 
 #pragma mark - scrollViewDelegate
