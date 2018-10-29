@@ -5,7 +5,7 @@
 
 ## Usage
 
-1. Copy `InfinitePageView.h` and `InfinitePageView.m` to your project.
+1. Copy `KKScrollBannerView.h` and `KKScrollBannerView.m` to your project.
 2. Set up in your views like this: 
 ```  
 KKScrollBannerView *bannerView = [[KKScrollBannerView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
